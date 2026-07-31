@@ -26,7 +26,7 @@
 ### 前置要求
 
 - Node.js 18+ 
-- npm、pnpm、yarn 或 bun
+- pnpm 11+
 
 ### 安装
 
@@ -34,17 +34,8 @@
 2. 安装依赖：
 
 ```bash
-# npm（推荐用于此项目）
-npm install
-
-# pnpm
+# 本项目统一使用 pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ### 开发
@@ -52,17 +43,7 @@ bun install
 在 `http://localhost:3000` 启动开发服务器：
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
 pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## 📁 项目结构
@@ -135,33 +116,13 @@ date: '2025-01-13'
 构建生产环境应用：
 
 ```bash
-# npm
-npm run build
-
-# pnpm
 pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
 本地预览生产环境构建：
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
 pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
 ## 🌐 部署
