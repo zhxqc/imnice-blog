@@ -2,9 +2,9 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devServer: {
-    port: 3001
+    port: 43129
   },
   modules: ['@nuxt/content'],
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   nitro: {}
 })
