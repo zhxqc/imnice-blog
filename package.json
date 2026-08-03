@@ -1,11 +1,11 @@
 {
-  "name": "nuxt-content-starter",
+  "name": "imnice-blog",
   "type": "module",
   "private": true,
   "packageManager": "pnpm@11.18.0",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --open",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
