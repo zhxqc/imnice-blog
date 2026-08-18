@@ -4,26 +4,13 @@
       <div class="hero-copy">
         <p class="eyebrow">独立开发者 · 产品与实践记录</p>
         <h1 id="hero-title">把遇到的问题，<br>做成能被使用的小产品。</h1>
-        <p class="intro">你好，我是恒言。这里记录我开发的插件、微信小程序、在线工具与桌面应用，以及一路上的学习和实践。</p>
+        <p class="intro">你好，我是恒言Tech。这里记录我开发的插件、微信小程序、在线工具与桌面应用，以及一路上的学习和实践。</p>
         <div class="hero-actions">
           <a href="#products" class="primary-button">查看我的产品</a>
           <a href="https://github.com/zhxqc" target="_blank" rel="noreferrer" class="text-link">访问 GitHub ↗</a>
         </div>
       </div>
 
-      <div class="hero-preview" role="img" aria-label="dsh-oh-my-theme 产品界面预览">
-        <header><span>dsh-oh-my-theme</span><span>npm package</span></header>
-        <div class="preview-body">
-          <aside><i></i><i></i><i></i></aside>
-          <div class="preview-content">
-            <p>主题设置</p>
-            <div><span>01</span><b>@ 文件引用</b><small>可用</small></div>
-            <div><span>02</span><b>文件工作台</b><small>可用</small></div>
-            <div><span>03</span><b>Git 只读视图</b><small>可用</small></div>
-          </div>
-        </div>
-        <footer><span>dsh plugin --profile web add dsh-oh-my-theme</span><b>查看产品 ↗</b></footer>
-      </div>
     </section>
 
     <section id="products" class="products-section" aria-labelledby="products-title">
@@ -124,10 +111,10 @@
         <div class="wechat-contact">
           <span>微信</span>
           <figure>
-            <a href="https://img.imnice.top/img/2026/08/17-2032-lmmg2e.jpg" target="_blank" rel="noreferrer" aria-label="打开恒言的微信二维码原图">
-              <img src="https://img.imnice.top/img/2026/08/17-2032-lmmg2e.jpg" alt="恒言的微信二维码" loading="lazy">
+            <a href="https://img.imnice.top/img/2026/08/17-2032-lmmg2e.jpg" target="_blank" rel="noreferrer" aria-label="打开恒言Tech 的微信二维码原图">
+              <img src="https://img.imnice.top/img/2026/08/17-2032-lmmg2e.jpg" alt="恒言Tech 的微信二维码" loading="lazy">
             </a>
-            <figcaption>微信扫码添加恒言</figcaption>
+            <figcaption>微信扫码添加恒言Tech</figcaption>
           </figure>
         </div>
       </div>
@@ -137,8 +124,8 @@
 
 <script setup>
 useSeoMeta({
-  title: '恒言 · 独立开发者与产品记录',
-  description: '记录恒言开发的插件、微信小程序、在线工具、桌面应用和一路上的实践。'
+  title: '恒言Tech · 独立开发者与产品记录',
+  description: '记录恒言Tech 开发的插件、微信小程序、在线工具、桌面应用和一路上的实践。'
 })
 </script>
 
@@ -159,21 +146,6 @@ h1 { margin: 0; font-size: 62px; line-height: 1.15; }
 .primary-button, .text-link { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; text-decoration: none; }
 .primary-button { min-width: 180px; padding: 0 24px; background: var(--ink); color: var(--surface); }
 .text-link { border-bottom: 1px solid var(--ink); }
-
-.hero-preview { margin-top: 72px; border: 1px solid #383838; background: var(--ink); color: var(--surface); }
-.hero-preview > header, .hero-preview > footer { min-height: 54px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; color: #b9b7b2; font-size: 12px; }
-.hero-preview > header { border-bottom: 1px solid #444; }
-.hero-preview > footer { border-top: 1px solid #444; }
-.hero-preview > footer b { color: var(--surface); }
-.preview-body { min-height: 330px; display: grid; grid-template-columns: 64px 1fr; }
-.preview-body aside { display: grid; align-content: start; justify-content: center; gap: 18px; padding-top: 26px; border-right: 1px solid #444; }
-.preview-body aside i { width: 12px; height: 12px; border: 1px solid #aaa; }
-.preview-body aside i:first-child { background: var(--surface); }
-.preview-content { padding: 36px; }
-.preview-content > p { margin: 0 0 24px; color: #b9b7b2; font-size: 13px; }
-.preview-content > div { min-height: 64px; display: grid; grid-template-columns: 60px 1fr auto; align-items: center; border-top: 1px solid #454545; }
-.preview-content > div:last-child { border-bottom: 1px solid #454545; }
-.preview-content span, .preview-content small { color: #aaa8a3; font-size: 11px; }
 
 .products-section { padding: 88px max(var(--gutter), calc((100% - var(--container)) / 2)); border-top: 1px solid var(--line); background: var(--surface); }
 .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; margin-bottom: 40px; }
@@ -237,11 +209,6 @@ h1 { margin: 0; font-size: 62px; line-height: 1.15; }
   .hero { padding-top: 64px; padding-bottom: 72px; }
   h1 { font-size: 42px; }
   .intro { font-size: 17px; }
-  .hero-preview { margin-top: 52px; }
-  .preview-body { min-height: 290px; grid-template-columns: 44px 1fr; }
-  .preview-content { padding: 24px 18px; }
-  .preview-content > div { grid-template-columns: 34px 1fr auto; }
-  .hero-preview > footer { align-items: flex-start; flex-direction: column; justify-content: center; gap: 3px; }
   .products-section { padding-top: 68px; padding-bottom: 72px; }
   .section-heading { align-items: flex-start; flex-direction: column; gap: 18px; }
   .section-heading h2, .contact-section h2 { font-size: 34px; }

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 48" role="img" aria-labelledby="title">
+  <title id="title">恒言Tech</title>
+  <rect width="48" height="48" fill="#2454FF"/>
+  <path d="M10 9h7v30h-7zM31 9h7v30h-7z" fill="#fff"/>
+  <path d="M17 21h14v7H17z" fill="#F6C945"/>
+  <text x="62" y="34" fill="#FBFAF7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="29" font-weight="750">恒言</text>
+  <text x="124" y="34" fill="#F6C945" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" font-weight="700">Tech</text>
+</svg>

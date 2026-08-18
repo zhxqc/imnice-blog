@@ -4,8 +4,6 @@ description: '根据幼犬年龄、当前体重、品种、性别和成长模式
 date: '2026-08-17'
 ---
 
-# PuppyWeightCalc
-
 PuppyWeightCalc 是一个面向美国幼犬主人的免费英文工具，用来回答一个很直接的问题：**How big will my puppy get?**
 
 用户不需要注册账号，只要填写幼犬当前的信息，就能获得成年体重的估算区间、成长阶段和预测置信度。

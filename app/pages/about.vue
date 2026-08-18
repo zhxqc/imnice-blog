@@ -2,7 +2,7 @@
   <div class="about-page">
     <section class="about-hero" aria-labelledby="about-title">
       <p class="page-kicker">关于我</p>
-      <h1 id="about-title">你好，我是恒言。</h1>
+      <h1 id="about-title">你好，我是恒言Tech。</h1>
       <p>我喜欢把遇到的问题，做成简单、实际、可以被使用的小产品。这个站用来记录我开发的插件、微信小程序、在线工具与桌面应用，以及一路上的实践。</p>
     </section>
 
@@ -22,10 +22,10 @@
         <div class="wechat-contact">
           <span>微信</span>
           <figure>
-            <a href="https://img.imnice.top/img/2026/08/17-2032-lmmg2e.jpg" target="_blank" rel="noreferrer" aria-label="打开恒言的微信二维码原图">
-              <img src="https://img.imnice.top/img/2026/08/17-2032-lmmg2e.jpg" alt="恒言的微信二维码" loading="lazy">
+            <a href="https://img.imnice.top/img/2026/08/17-2032-lmmg2e.jpg" target="_blank" rel="noreferrer" aria-label="打开恒言Tech 的微信二维码原图">
+              <img src="https://img.imnice.top/img/2026/08/17-2032-lmmg2e.jpg" alt="恒言Tech 的微信二维码" loading="lazy">
             </a>
-            <figcaption>微信扫码添加恒言</figcaption>
+            <figcaption>微信扫码添加恒言Tech</figcaption>
           </figure>
         </div>
       </div>
@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-useSeoMeta({ title: '关于我 · 恒言', description: '关于恒言，以及这个用来记录产品和实践的小站。' })
+useSeoMeta({ title: '关于我 · 恒言Tech', description: '关于恒言Tech，以及这个用来记录产品和实践的小站。' })
 </script>
 
 <style scoped>

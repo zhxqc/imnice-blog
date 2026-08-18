@@ -12,7 +12,7 @@
 
       <div class="calculator-preview" role="img" aria-label="PuppyWeightCalc 幼犬成年体重估算界面示意">
         <header>
-          <div><img src="https://www.puppyweightcalc.com/logo.svg" alt=""><b>Puppy Weight Calculator</b></div>
+          <div><img src="/puppyweightcalc-logo.svg" alt=""><b>Puppy Weight Calculator</b></div>
           <span>Free · No sign-up</span>
         </header>
         <div class="calculator-body">
@@ -70,7 +70,7 @@ if (!page.value) {
 }
 
 useSeoMeta({
-  title: () => `${page.value.title} · 恒言`,
+  title: () => `${page.value.title} · 恒言Tech`,
   description: () => page.value.description
 })
 </script>

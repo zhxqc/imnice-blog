@@ -28,8 +28,8 @@ if (!page.value) {
 }
 
 useSeoMeta({
-  title: () => `${page.value.title} - 恒言`,
-  description: () => page.value.description || '恒言的产品与实践记录'
+  title: () => `${page.value.title} - 恒言Tech`,
+  description: () => page.value.description || '恒言Tech 的产品与实践记录'
 })
 
 const formatDate = (dateString) => {

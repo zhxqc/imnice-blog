@@ -1,6 +1,6 @@
-# 恒言的博客
+# 恒言Tech 的博客
 
-这是恒言的中文博客和产品展示站，基于 Nuxt 4、Vue 3 与 Nuxt Content 构建。文章使用 Markdown 维护，目前主要介绍独立开发产品与实践记录。
+这是恒言Tech 的中文博客和产品展示站，基于 Nuxt 4、Vue 3 与 Nuxt Content 构建。文章使用 Markdown 维护，目前主要介绍独立开发产品与实践记录。
 
 ## 环境要求
 

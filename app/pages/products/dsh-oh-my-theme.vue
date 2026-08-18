@@ -48,7 +48,7 @@ if (!page.value) {
 }
 
 useSeoMeta({
-  title: () => `${page.value.title} · 恒言`,
+  title: () => `${page.value.title} · 恒言Tech`,
   description: () => page.value.description
 })
 </script>

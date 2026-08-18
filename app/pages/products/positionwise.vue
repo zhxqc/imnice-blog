@@ -44,13 +44,13 @@
       <div>
         <p>获取安装包</p>
         <h2 id="access-title">暂未公开，联系获取。</h2>
-        <span>微信扫码联系恒言，并注明需要 Windows 还是 macOS 版本。安装包不会通过公开下载页分发。</span>
+        <span>微信扫码联系恒言Tech，并注明需要 Windows 还是 macOS 版本。安装包不会通过公开下载页分发。</span>
       </div>
       <figure>
-        <a href="https://img.imnice.top/img/2026/08/17-2032-lmmg2e.jpg" target="_blank" rel="noreferrer" aria-label="打开恒言的微信二维码原图">
-          <img src="https://img.imnice.top/img/2026/08/17-2032-lmmg2e.jpg" alt="恒言的微信二维码" loading="lazy">
+        <a href="https://img.imnice.top/img/2026/08/17-2032-lmmg2e.jpg" target="_blank" rel="noreferrer" aria-label="打开恒言Tech 的微信二维码原图">
+          <img src="https://img.imnice.top/img/2026/08/17-2032-lmmg2e.jpg" alt="恒言Tech 的微信二维码" loading="lazy">
         </a>
-        <figcaption>微信扫码联系恒言</figcaption>
+        <figcaption>微信扫码联系恒言Tech</figcaption>
       </figure>
     </section>
   </div>
@@ -66,7 +66,7 @@ if (!page.value) {
 }
 
 useSeoMeta({
-  title: () => `${page.value.title} · 恒言`,
+  title: () => `${page.value.title} · 恒言Tech`,
   description: () => page.value.description
 })
 </script>

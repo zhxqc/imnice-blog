@@ -4,7 +4,9 @@
 
     <header class="site-header">
       <nav class="site-nav" aria-label="主导航">
-        <NuxtLink to="/" class="site-brand" aria-label="恒言首页">恒言</NuxtLink>
+        <NuxtLink to="/" class="site-brand" aria-label="恒言Tech 首页">
+          <SiteLogo />
+        </NuxtLink>
         <div class="site-links">
           <NuxtLink to="/#products" class="site-link">产品</NuxtLink>
           <NuxtLink to="/about" class="site-link">关于</NuxtLink>
@@ -20,7 +22,9 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <div>
-          <NuxtLink to="/" class="footer-brand">恒言</NuxtLink>
+          <NuxtLink to="/" class="footer-brand" aria-label="恒言Tech 首页">
+            <SiteLogo tone="light" />
+          </NuxtLink>
           <p>把遇到的问题，做成可以被使用的小产品。</p>
         </div>
         <div class="footer-links">
@@ -29,7 +33,7 @@
           <a href="https://github.com/zhxqc" target="_blank" rel="noreferrer">GitHub ↗</a>
         </div>
       </div>
-      <p class="copyright">© 2026 恒言 · 独立开发者与产品记录</p>
+      <p class="copyright">© 2026 恒言Tech · 独立开发者与产品记录</p>
     </footer>
   </div>
 </template>
@@ -41,7 +45,17 @@ useHead({
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
   ],
-  link: [{ rel: 'icon', href: '/favicon.ico' }]
+  link: [
+    { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=2' },
+    { rel: 'alternate icon', href: '/favicon.ico' }
+  ]
+})
+
+useSeoMeta({
+  ogSiteName: '恒言Tech · 独立开发者与产品记录',
+  ogType: 'website',
+  ogLocale: 'zh_CN',
+  twitterCard: 'summary'
 })
 </script>
 
@@ -59,6 +73,12 @@ useHead({
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
+section[id],
+article[id],
+div[id] {
+  scroll-margin-top: 88px;
+}
 
 body {
   margin: 0;
@@ -117,8 +137,6 @@ button:focus-visible {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-  font-size: 23px;
-  font-weight: 750;
   text-decoration: none;
 }
 
@@ -147,7 +165,8 @@ button:focus-visible {
 .footer-inner,
 .copyright { width: min(100%, var(--container)); margin-right: auto; margin-left: auto; }
 .footer-inner { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; padding-bottom: 48px; }
-.footer-brand { font-size: 30px; font-weight: 750; text-decoration: none; }
+.footer-brand { min-height: 48px; display: inline-flex; align-items: center; text-decoration: none; }
+.footer-brand .site-logo { transform: scale(1.1); transform-origin: left center; }
 .footer-inner p { margin: 10px 0 0; color: #b9b7b2; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
 .footer-links a { min-height: 44px; display: inline-flex; align-items: center; color: #d2d0cb; font-size: 14px; text-decoration: none; }
