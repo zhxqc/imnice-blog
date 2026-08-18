@@ -28,8 +28,8 @@ if (!page.value) {
 }
 
 useSeoMeta({
-  title: () => `${page.value.title} - 我的博客`,
-  description: () => page.value.description || '我的博客'
+  title: () => `${page.value.title} - 恒言`,
+  description: () => page.value.description || '恒言的产品与实践记录'
 })
 
 const formatDate = (dateString) => {
@@ -46,53 +46,54 @@ const formatDate = (dateString) => {
 .article-page {
   width: min(100% - 2rem, 720px);
   margin: 0 auto;
-  padding: 4rem 0 6rem;
+  padding: 72px 0 96px;
 }
 
 .article-header {
   padding-bottom: 2rem;
-  border-bottom: 1px solid #e7e5e4;
+  border-bottom: 1px solid var(--line);
 }
 
 .back-link {
   display: inline-block;
   margin-bottom: 3rem;
-  color: #b45309;
-  font-size: 0.9rem;
+  color: var(--muted);
+  font-size: 14px;
   text-decoration: none;
 }
 
 .article-date {
   margin: 0 0 0.75rem;
-  color: #a8a29e;
-  font-size: 0.9rem;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 h1 {
   margin: 0;
-  font-size: clamp(2.25rem, 6vw, 4rem);
-  line-height: 1.1;
-  letter-spacing: -0.05em;
+  font-size: 52px;
+  line-height: 1.15;
 }
 
 .article-description {
   margin: 1.25rem 0 0;
-  color: #78716c;
-  font-size: 1.1rem;
+  color: var(--ink-soft);
+  font-size: 18px;
 }
 
 .article-body {
-  padding-top: 2.5rem;
+  padding-top: 40px;
 }
 
 @media (max-width: 640px) {
   .article-page {
     width: min(100% - 1.5rem, 720px);
-    padding-top: 2.5rem;
+    padding-top: 40px;
   }
 
   .back-link {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
   }
+
+  h1 { font-size: 38px; }
 }
 </style>

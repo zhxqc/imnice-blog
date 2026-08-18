@@ -3,6 +3,10 @@
   "type": "module",
   "private": true,
   "packageManager": "pnpm@11.18.0",
+  "engines": {
+    "node": ">=24.19.0 <25",
+    "pnpm": ">=11 <12"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --open",

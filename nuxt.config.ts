@@ -5,6 +5,11 @@ export default defineNuxtConfig({
     port: 43129
   },
   modules: ['@nuxt/content'],
+  content: {
+    experimental: {
+      nativeSqlite: true
+    }
+  },
   devtools: { enabled: false },
   nitro: {}
 })
