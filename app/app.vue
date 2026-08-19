@@ -47,6 +47,21 @@ useHead({
   ],
   link: [
     { rel: 'icon', type: 'image/svg+xml', sizes: 'any', href: '/favicon.svg?v=3' }
+  ],
+  script: [
+    {
+      // 百度统计：在 SSR/SSG 阶段直接写入 <head>，确保服务端返回的 HTML 里包含
+      // hm.baidu.com/hm.js，百度「代码安装检测」才能识别到。
+      innerHTML: [
+        'var _hmt = _hmt || [];',
+        '(function() {',
+        '  var hm = document.createElement("script");',
+        '  hm.src = "https://hm.baidu.com/hm.js?e15730fb7750ed50246c321990ff8230";',
+        '  var s = document.getElementsByTagName("script")[0];',
+        '  s.parentNode.insertBefore(hm, s);',
+        '})();'
+      ].join('\n')
+    }
   ]
 })
 
