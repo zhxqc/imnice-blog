@@ -14,7 +14,7 @@ pnpm install
 pnpm dev
 ```
 
-开发服务器会使用 `43129` 端口并自动打开浏览器，也可以手动打开 `http://localhost:43129`。
+开发服务器会使用 `43129` 端口，并通过轮询实时监听 Markdown 与代码变化。请手动打开 `http://localhost:43129`。
 
 ## 添加文章
 

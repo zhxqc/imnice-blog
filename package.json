@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev --open",
+    "dev": "CHOKIDAR_USEPOLLING=true CHOKIDAR_INTERVAL=500 nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"

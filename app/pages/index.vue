@@ -18,6 +18,19 @@
         <div class="hero-art-orbit"><i></i><i></i><i></i></div>
       </div>
 
+      <aside v-if="latestDailies.length" class="hero-latest editorial-reveal editorial-reveal-4" aria-labelledby="latest-daily-title">
+        <div class="hero-latest-heading">
+          <p id="latest-daily-title">最新智能日报</p>
+          <NuxtLink to="/ai-daily">查看全部日报 <span aria-hidden="true">↗</span></NuxtLink>
+        </div>
+        <div class="hero-latest-list">
+          <NuxtLink v-for="post in latestDailies" :key="post.path" :to="post.path" class="hero-daily-link">
+            <time :datetime="post.date || post.meta?.date">{{ formatDate(post.date || post.meta?.date) }}</time>
+            <strong>{{ post.title }}</strong>
+            <span aria-hidden="true">→</span>
+          </NuxtLink>
+        </div>
+      </aside>
     </section>
 
     <section id="products" class="products-section" aria-labelledby="products-title">
@@ -107,26 +120,6 @@
       </div>
     </section>
 
-    <section id="journal" class="journal-section" aria-labelledby="journal-title">
-      <div class="section-heading" data-reveal>
-        <div>
-          <p class="section-kicker">文章</p>
-          <h2 id="journal-title">AI 智能监控日报</h2>
-        </div>
-        <p>每天自动追踪 AI 新闻、论文、GitHub 增星与 CoSER 更新，附原始来源。</p>
-      </div>
-
-      <div class="journal-list" data-reveal>
-        <NuxtLink v-for="post in articles" :key="post.path" :to="post.path" class="journal-item">
-          <time :datetime="post.date || post.meta?.date">{{ formatDate(post.date || post.meta?.date) }}</time>
-          <div>
-            <h3>{{ post.title }}</h3>
-            <p v-if="post.description">{{ post.description }}</p>
-          </div>
-        </NuxtLink>
-      </div>
-    </section>
-
     <section id="contact" class="contact-section" aria-labelledby="contact-title">
       <div data-reveal>
         <p class="section-kicker">联系</p>
@@ -153,14 +146,15 @@
 const motionReady = ref(false)
 let revealObserver
 
-const { data: pages } = await useAsyncData('articles', () =>
+const { data: dailyPages } = await useAsyncData('home-latest-dailies', () =>
   queryCollection('content').all()
 )
 
-const articles = computed(() =>
-  (pages.value || [])
-    .filter((p) => p.path !== '/about' && (p.date || p.meta?.date))
+const latestDailies = computed(() =>
+  (dailyPages.value || [])
+    .filter((page) => page.path.startsWith('/ai-daily/') && (page.date || page.meta?.date))
     .sort((a, b) => new Date(b.date || b.meta?.date) - new Date(a.date || a.meta?.date))
+    .slice(0, 3)
 )
 
 const formatDate = (dateString) => {
@@ -212,9 +206,10 @@ useSeoMeta({
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(300px, .72fr);
-  gap: clamp(42px, 7vw, 96px);
+  column-gap: clamp(42px, 7vw, 96px);
+  row-gap: 36px;
   align-items: center;
-  padding: 88px 0 96px;
+  padding: 64px 0 56px;
 }
 
 .hero::before,
@@ -233,6 +228,72 @@ h1 span { display: block; }
 .primary-button:hover { background: #2454ff; transform: translateY(-4px); }
 .text-link { border-bottom: 1px solid var(--ink); transition: color 180ms ease, border-color 180ms ease; }
 .text-link:hover { color: #2454ff; border-color: #2454ff; }
+
+.hero-latest {
+  grid-column: 1 / -1;
+  min-width: 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-latest-heading {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-latest-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.hero-latest-heading a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.hero-latest-heading a:hover { text-decoration: underline; text-underline-offset: 5px; }
+
+.hero-latest-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.hero-daily-link {
+  min-width: 0;
+  min-height: 104px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  column-gap: 16px;
+  align-items: start;
+  padding: 18px 22px 18px 0;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 180ms ease, padding-left 180ms ease;
+}
+
+.hero-daily-link + .hero-daily-link {
+  padding-left: 22px;
+  border-left: 1px solid var(--line);
+}
+
+.hero-daily-link:hover { background: var(--surface); padding-left: 12px; }
+.hero-daily-link + .hero-daily-link:hover { padding-left: 34px; }
+.hero-daily-link time { grid-column: 1 / -1; margin-bottom: 8px; color: var(--muted); font-size: 12px; }
+.hero-daily-link strong { min-width: 0; font-size: 16px; line-height: 1.45; }
+.hero-daily-link > span { color: #2454ff; font-size: 18px; line-height: 1.35; }
 
 .editorial-reveal { transform: translateY(0); }
 .motion-ready .editorial-reveal { animation: editorial-rise 720ms cubic-bezier(.22,.8,.25,1) forwards; }
@@ -322,17 +383,6 @@ h1 span { display: block; }
 
 .contact-section { width: min(calc(100% - (var(--gutter) * 2)), var(--container)); margin: 0 auto; display: grid; grid-template-columns: 1fr 0.8fr; gap: 80px; align-items: end; padding: 88px 0 96px; }
 
-.journal-section { padding: 88px max(var(--gutter), calc((100% - var(--container)) / 2)); border-top: 1px solid var(--line); background: var(--paper); }
-.journal-list { border-top: 1px solid var(--ink); }
-.journal-item { min-height: 96px; display: grid; grid-template-columns: 150px 1fr; gap: 24px; align-items: baseline; padding: 20px 4px; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; transition: background-color 180ms ease; }
-.journal-item:hover { background: var(--surface); }
-.journal-item time { color: var(--muted); font-size: 13px; }
-.journal-item h3 { margin: 0; font-size: 19px; line-height: 1.35; }
-.journal-item p { margin: 6px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
-@media (max-width: 760px) {
-  .journal-section { padding-top: 68px; padding-bottom: 72px; }
-  .journal-item { grid-template-columns: 1fr; gap: 6px; min-height: 0; }
-}
 .contact-section > div:first-child > p:last-child { max-width: 560px; margin: 22px 0 0; color: var(--ink-soft); }
 .contact-list { border-top: 1px solid var(--ink); }
 .contact-list > * { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--ink); font-size: 13px; text-decoration: none; }
@@ -344,7 +394,7 @@ h1 span { display: block; }
 .wechat-contact figcaption { margin-top: 9px; color: var(--muted); font-size: 11px; }
 
 @media (max-width: 760px) {
-  .hero { grid-template-columns: 1fr; gap: 42px; padding-top: 64px; padding-bottom: 72px; }
+  .hero { grid-template-columns: 1fr; gap: 42px; padding-top: 56px; padding-bottom: 56px; }
   .hero::before { left: -16px; }
   .hero::after { right: 1%; bottom: 50px; width: 58px; height: 9px; }
   h1 { font-size: 42px; }
@@ -356,11 +406,17 @@ h1 span { display: block; }
   .product-visual { min-height: 300px; }
   .contact-section { gap: 44px; padding-top: 68px; padding-bottom: 72px; }
   .wechat-contact figure { width: 132px; }
-  .hero-visual { min-height: 300px; }
+  .hero-visual { min-height: 300px; order: 3; }
   .hero-art-cross { top: 50%; left: 50%; right: auto; transform: translate(-50%, -50%) scale(.78) rotate(15deg); transform-origin: center; }
   .hero-art-frame { top: 50%; left: 50%; right: auto; width: 190px; height: 220px; padding: 18px; }
   .hero-art-frame span { font-size: 23px; }
   .hero-art-orbit { left: 50%; right: auto; bottom: 5%; transform: translateX(-50%) scale(.78) rotate(-20deg); transform-origin: center; }
+  .hero-latest { grid-column: 1; order: 2; }
+  .hero-latest-list { grid-template-columns: 1fr; }
+  .hero-daily-link { min-height: 88px; padding: 16px 0; }
+  .hero-daily-link + .hero-daily-link { padding-left: 0; border-top: 1px solid var(--line); border-left: 0; }
+  .hero-daily-link:hover,
+  .hero-daily-link + .hero-daily-link:hover { padding-left: 10px; }
 }
 
 @keyframes editorial-rise {
@@ -403,7 +459,7 @@ h1 span { display: block; }
   .motion-ready .hero-art-cross,
   .motion-ready .hero-art-frame,
   .motion-ready .hero-art-orbit { opacity: 1; transform: none; animation: none; transition: none; }
-  .primary-button, .text-link, .product-card { transition: none; }
+  .primary-button, .text-link, .product-card, .hero-daily-link { transition: none; }
   .hero-visual::before { animation: none; transform: none; opacity: 1; }
 }
 </style>

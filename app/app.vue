@@ -9,6 +9,7 @@
         </NuxtLink>
         <div class="site-links">
           <NuxtLink to="/#products" class="site-link">产品</NuxtLink>
+          <NuxtLink to="/ai-daily" class="site-link">智能日报</NuxtLink>
           <NuxtLink to="/about" class="site-link">关于</NuxtLink>
           <a href="https://github.com/zhxqc" target="_blank" rel="noreferrer" class="site-link">GitHub ↗</a>
         </div>
@@ -29,6 +30,7 @@
         </div>
         <div class="footer-links">
           <NuxtLink to="/#products">产品</NuxtLink>
+          <NuxtLink to="/ai-daily">智能日报</NuxtLink>
           <NuxtLink to="/about">关于我</NuxtLink>
           <a href="https://github.com/zhxqc" target="_blank" rel="noreferrer">GitHub ↗</a>
         </div>
@@ -199,7 +201,7 @@ button:focus-visible {
   :root { --gutter: 20px; }
   .site-nav { min-height: 64px; }
   .site-links { gap: 16px; }
-  .site-links .site-link:nth-child(3) { display: none; }
+  .site-links .site-link:nth-child(4) { display: none; }
   .footer-inner { align-items: flex-start; flex-direction: column; }
 }
 
