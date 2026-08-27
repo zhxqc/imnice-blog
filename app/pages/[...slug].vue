@@ -2,7 +2,7 @@
   <article class="article-page">
     <header class="article-header">
       <NuxtLink to="/" class="back-link">← 返回首页</NuxtLink>
-      <p v-if="page.date" class="article-date">{{ formatDate(page.date) }}</p>
+      <p v-if="page.date || page.meta?.date" class="article-date">{{ formatDate(page.date || page.meta?.date) }}</p>
       <h1>{{ page.title }}</h1>
       <p v-if="page.description" class="article-description">{{ page.description }}</p>
     </header>

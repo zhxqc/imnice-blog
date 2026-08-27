@@ -107,6 +107,26 @@
       </div>
     </section>
 
+    <section id="journal" class="journal-section" aria-labelledby="journal-title">
+      <div class="section-heading" data-reveal>
+        <div>
+          <p class="section-kicker">文章</p>
+          <h2 id="journal-title">AI 智能监控日报</h2>
+        </div>
+        <p>每天自动追踪 AI 新闻、论文、GitHub 增星与 CoSER 更新，附原始来源。</p>
+      </div>
+
+      <div class="journal-list" data-reveal>
+        <NuxtLink v-for="post in articles" :key="post.path" :to="post.path" class="journal-item">
+          <time :datetime="post.date || post.meta?.date">{{ formatDate(post.date || post.meta?.date) }}</time>
+          <div>
+            <h3>{{ post.title }}</h3>
+            <p v-if="post.description">{{ post.description }}</p>
+          </div>
+        </NuxtLink>
+      </div>
+    </section>
+
     <section id="contact" class="contact-section" aria-labelledby="contact-title">
       <div data-reveal>
         <p class="section-kicker">联系</p>
@@ -132,6 +152,25 @@
 <script setup>
 const motionReady = ref(false)
 let revealObserver
+
+const { data: pages } = await useAsyncData('articles', () =>
+  queryCollection('content').all()
+)
+
+const articles = computed(() =>
+  (pages.value || [])
+    .filter((p) => p.path !== '/about' && (p.date || p.meta?.date))
+    .sort((a, b) => new Date(b.date || b.meta?.date) - new Date(a.date || a.meta?.date))
+)
+
+const formatDate = (dateString) => {
+  if (!dateString) return ''
+  return new Date(dateString).toLocaleDateString('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+}
 
 onMounted(() => {
   motionReady.value = true
@@ -282,6 +321,18 @@ h1 span { display: block; }
 .product-links span { color: var(--muted); }
 
 .contact-section { width: min(calc(100% - (var(--gutter) * 2)), var(--container)); margin: 0 auto; display: grid; grid-template-columns: 1fr 0.8fr; gap: 80px; align-items: end; padding: 88px 0 96px; }
+
+.journal-section { padding: 88px max(var(--gutter), calc((100% - var(--container)) / 2)); border-top: 1px solid var(--line); background: var(--paper); }
+.journal-list { border-top: 1px solid var(--ink); }
+.journal-item { min-height: 96px; display: grid; grid-template-columns: 150px 1fr; gap: 24px; align-items: baseline; padding: 20px 4px; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; transition: background-color 180ms ease; }
+.journal-item:hover { background: var(--surface); }
+.journal-item time { color: var(--muted); font-size: 13px; }
+.journal-item h3 { margin: 0; font-size: 19px; line-height: 1.35; }
+.journal-item p { margin: 6px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+@media (max-width: 760px) {
+  .journal-section { padding-top: 68px; padding-bottom: 72px; }
+  .journal-item { grid-template-columns: 1fr; gap: 6px; min-height: 0; }
+}
 .contact-section > div:first-child > p:last-child { max-width: 560px; margin: 22px 0 0; color: var(--ink-soft); }
 .contact-list { border-top: 1px solid var(--ink); }
 .contact-list > * { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--ink); font-size: 13px; text-decoration: none; }
