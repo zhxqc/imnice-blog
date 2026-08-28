@@ -66,7 +66,7 @@ onBeforeUnmount(() => clearTimeout(resetTimer))
   margin: 24px 0;
   overflow: hidden;
   border: 1px solid #30363d;
-  border-radius: 4px;
+  border-radius: 16px;
   background: #0d1117;
   color: #e6edf3;
 }
@@ -108,7 +108,7 @@ onBeforeUnmount(() => clearTimeout(resetTimer))
   min-height: 44px;
   padding: 0 14px;
   border: 1px solid transparent;
-  border-radius: 3px;
+  border-radius: 8px;
   background: transparent;
   color: #c9d1d9;
   font-size: 12px;

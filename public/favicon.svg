@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
   <title id="title">恒言Tech</title>
-  <rect width="64" height="64" fill="#2454FF"/>
-  <path d="M13 12h9v40h-9zM42 12h9v40h-9z" fill="#fff"/>
-  <path d="M22 28h20v9H22z" fill="#F6C945"/>
+  <rect width="64" height="64" rx="15" fill="#4E6FD7"/>
+  <path d="M14 13h9v38h-9zM41 13h9v38h-9z" fill="#fff"/>
+  <path d="M23 27h18v10H23z" fill="#DDA75F"/>
 </svg>
