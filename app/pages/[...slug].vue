@@ -53,7 +53,6 @@
 <script setup>
 const route = useRoute()
 const articleBody = ref(null)
-const tocItems = ref([])
 const activeHeading = ref('')
 const readingProgress = ref(0)
 const largeText = ref(false)
@@ -66,6 +65,16 @@ const { data: page } = await useAsyncData(`page-${route.path}`, () => queryColle
 const { data: allPages } = await useAsyncData('article-daily-navigation', () => queryCollection('content').all())
 
 if (!page.value) throw createError({ statusCode: 404, statusMessage: '页面不存在' })
+
+// 首屏使用 Content 已解析的目录，避免挂载后插入目录导致正文换列。
+const tocItems = computed(() => {
+  const collectHeadings = (links) => links.flatMap((link) => [
+    ...(link.depth === 2 ? [{ id: link.id, text: link.text }] : []),
+    ...collectHeadings(link.children || [])
+  ])
+  return collectHeadings(page.value.body?.toc?.links || [])
+})
+activeHeading.value = tocItems.value[0]?.id || ''
 
 const dailies = computed(() =>
   (allPages.value || [])
@@ -116,11 +125,6 @@ const updateProgress = () => {
 onMounted(async () => {
   await nextTick()
   const headings = [...articleBody.value.querySelectorAll('h2')]
-  tocItems.value = headings.map((heading, index) => {
-    if (!heading.id) heading.id = `section-${index + 1}`
-    return { id: heading.id, text: heading.textContent.trim() }
-  })
-  activeHeading.value = tocItems.value[0]?.id || ''
 
   headingObserver = new IntersectionObserver((entries) => {
     const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0]
@@ -161,7 +165,7 @@ useSeoMeta({
 .article-toc h2 { margin: 0 0 14px; color: var(--muted); font: 11px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 .article-toc a { min-height: 38px; display: flex; align-items: center; padding: 7px 0 7px 14px; border-left: 2px solid var(--line); color: var(--muted); font-size: 13px; line-height: 1.45; text-decoration: none; }
 .article-toc a:hover, .article-toc a.active { border-left-color: var(--accent); color: var(--ink); }
-.article-body { min-width: 0; color: var(--ink-soft); font-size: 17px; line-height: 1.86; }
+.article-body { grid-column: 2; min-width: 0; color: var(--ink-soft); font-size: 17px; line-height: 1.86; }
 .large-text .article-body { font-size: 19px; }
 .article-body :deep(h1), .article-body :deep(h2), .article-body :deep(h3), .article-body :deep(h4) { scroll-margin-top: 110px; color: var(--ink); line-height: 1.3; }
 .article-body :deep(h1) { margin: 0 0 28px; font-family: var(--serif); font-size: 38px; font-weight: 600; }
@@ -207,6 +211,7 @@ useSeoMeta({
 }
 @media (max-width: 820px) {
   .article-grid { grid-template-columns: 1fr; }
+  .article-body { grid-column: 1; }
   .article-toc { position: static; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
   .article-toc a { border-left: 0; border-bottom: 1px solid var(--line); }
   .article-next { grid-template-columns: 1fr; }
